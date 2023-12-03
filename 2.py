@@ -1,7 +1,7 @@
 from sys import stdin
 
 
-# ----------- PART 1 ------------
+# -------------------- PART 1 --------------------
 
 
 real_cubes = {
@@ -30,7 +30,8 @@ def part1():
             sum += int(game_number)
     print(sum)
 
-# ----------- PART 2 ------------
+# -------------------- PART 2 --------------------
+
 import math
 
 def get_min_set(cube_sets):

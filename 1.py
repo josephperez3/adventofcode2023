@@ -1,5 +1,25 @@
 from sys import stdin
 
+# -------------------- PART 1 --------------------
+
+def part1():
+    sum = 0
+    for line in stdin:
+        n1 = 0
+        n2 = 0
+        for c in line:
+            if c not in "123456789":
+                continue
+            number = int(c)
+            n2 = number
+            if not n1:
+                n1 = number
+        line_number = str(n1) + str(n2)
+        sum += int(line_number)
+    return sum
+
+# -------------------- PART 2 --------------------
+
 trie = {
     "t": {
         "w": "o",
@@ -40,7 +60,7 @@ def numberStrToInt(number):
 
 def checkForNumber(string, index):
     current_char = str(string[index])
-    if current_char in "0123456789":
+    if current_char in "123456789":
         return current_char
     current_string = ""
     trie_node = trie.get(current_char)
@@ -58,23 +78,23 @@ def checkForNumber(string, index):
         else:
             return ""
     return ""
-            
 
+def part2():
+    sum = 0
+    for line in stdin:
+        n1 = 0
+        n2 = 0
+        i = 0
+        while i < len(line):
+            x = checkForNumber(line, i)
+            x = numberStrToInt(x)
+            i += 1
+            if not x:
+                continue
+            n2 = x
+            if not n1:
+                n1 = x
+        line_number = str(n1) + str(n2)
+        sum += int(line_number)
+    return sum
 
-sum = 0
-for line in stdin:
-    n1 = 0
-    n2 = 0
-    i = 0
-    while i < len(line):
-        x = checkForNumber(line, i)
-        x = numberStrToInt(x)
-        i += 1
-        if not x:
-            continue
-        n2 = x
-        if not n1:
-            n1 = x
-    line_number = str(n1) + str(n2)
-    sum += int(line_number)
-print(sum)
